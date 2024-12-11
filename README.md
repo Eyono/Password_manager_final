@@ -1,29 +1,30 @@
-# CSV Cleaner
+# Secure Password Manager CLI
 
 ## Purpose
-This Python script processes a CSV file to remove duplicates and/or validate data, making it useful for cleaning up messy datasets.
+This script is a command-line interface (CLI) for managing passwords securely. It allows users to:
+- Add new password entries for different services
+- List stored passwords (filtered by service if desired)
+- Delete specific password entries
+- Generate secure random passwords or store user-provided passwords
+
+The script stores passwords in a CSV file (`passwords.csv`) with the following fields: service, username, password, and creation timestamp.
 
 ## Features
-- Remove duplicate rows based on the "Email" column.
-- Validate email fields using a regular expression.
-- Save cleaned data to a new CSV file.
+- **Add a new password**: Adds a new password entry for a service, with the option to provide a custom password or have one automatically generated.
+- **List passwords**: Displays stored passwords, optionally filtered by the service name.
+- **Delete a password**: Deletes a password entry based on service and username.
+- **Password generation**: Automatically generates a strong password using a combination of letters, digits, and punctuation.
 
-## Usage
-Run the script with the following options:
+## Requirements
+- Python 3.x
+- A CSV file (`passwords.csv`) for storing passwords.
+
+## Installation
+No installation is required. Just download the script and use it directly in your terminal.
+
+## How to Use
+
+### Add a New Password
+To add a new password entry for a service:
 ```bash
-python csv_cleaner.py -i input.csv -o output.csv [--remove-duplicates] [--validate-email]
-```
-
-### Arguments
-- `-i` or `--input`: Path to the input CSV file.
-- `-o` or `--output`: Path to the output CSV file.
-- `--remove-duplicates`: Remove duplicate rows.
-- `--validate-email`: Validate email addresses.
-
-### Example
-```bash
-python csv_cleaner.py -i contacts.csv -o cleaned_contacts.csv --remove-duplicates --validate-email
-```
-
-## Why It’s Useful
-Many professionals encounter CSV files with duplicate rows or improperly formatted fields (e.g., invalid emails). This script automates the cleanup process, saving time and ensuring data integrity.
+python password_manager.py -a SERVICE USERNAME [-p PASSWORD]
